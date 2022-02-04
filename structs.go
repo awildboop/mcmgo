@@ -17,12 +17,18 @@ import (
 // Raw response from the API
 type Response struct {
 	Result string          `json:"result"`
-	Data   json.RawMessage `json:"data"`
+	Data   json.RawMessage `json:"data,omitempty"`
+	Error  json.RawMessage `json:"error,omitempty"`
 }
 
 // Used to convert unix from the api to time.Time
 type Time struct {
 	time.Time
+}
+
+type ErrorResponse struct {
+	Code    string `json:"code"`
+	Message string `json:"message"`
 }
 
 // https://www.mc-market.org/wiki/v1-objects/#alerts-8203
